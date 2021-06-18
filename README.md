@@ -1,34 +1,92 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# DnD Homebrew
 
-## Getting Started
+## Pages
 
-First, run the development server:
+| Symbol | Meaning                 |
+| ------ | ----------------------- |
+| 🔐     | Requires authentication |
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+### `/` - Home
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### `/favorite` - Favorite contents
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### `/content/view/[contentId]` - View content
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### `/content/create` - Create content 🔐
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### `/content/update/[contentId]` - Update content 🔐
 
-## Learn More
+### `/signin` - Sign in
 
-To learn more about Next.js, take a look at the following resources:
+### `/signout` - Sign out 🔐
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### `/settings/[page]` - Account settings 🔐
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## API
 
-## Deploy on Vercel
+### `GET /content/[contentId]` - Get content
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<br>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+_PS: we may have to check a way of returns a contract based on **5etools** integration_
+
+## Collections
+
+| Symbol | Meaning                                 |
+| ------ | --------------------------------------- |
+| 💽     | Server side only (updated with actions) |
+
+### Contents
+
+| Name           | Description                        |
+| -------------- | ---------------------------------- |
+| `id 💽`        | Content ID                         |
+| `creator 💽`   | User ID                            |
+| `type`         | Content type - **`Types (table)`** |
+| `name`         | Content name                       |
+| `image`        | Content image - **`Base64`**       |
+| `data`         | Content data                       |
+| `metadata 💽`  | Metadata                           |
+| `createdAt 💽` | Creation date                      |
+
+#### Types details
+
+| Symbol | Meaning        |
+| ------ | -------------- |
+| 🏅     | Tag identifier |
+
+| Type      | Relevant data (show on cards)                                                         |
+| --------- | ------------------------------------------------------------------------------------- |
+| `Race`    | image, name, `size🏅`,`ability`, `environment`                                        |
+| `Class`   | image, name, `role🏅`, `hpDice`                                                       |
+| `Item`    | image, name, `rarity🏅`, `itemType`, `cost`                                           |
+| `Feat`    | image, name, `role🏅`, `ability`, `prerequisite`                                      |
+| `Spell`   | image, name, `level🏅`, `time`, `school`, `range`, `components[V,S,M]` , `flags[R,C]` |
+| `NPC`     | image, name, `level🏅`, `class`, `race`                                               |
+| `Monster` | image, name, `cr🏅`, `monsterType`, `cost`                                            |
+
+#### Content Methods
+
+Each `type` generates a class which extends the `Content` class.
+
+| Name                             | Return                | Description                                       |
+| -------------------------------- | --------------------- | ------------------------------------------------- |
+| **static**`get(content)`         | `Content<T>`          | Get content according the `type`                  |
+| **static** `loadContent(id)`     | `P() => Content<T>`   | Load content by `id` and set according the `type` |
+| `saveContent()`                  | `P() => undefined`    | Save form according the `type`                    |
+| `<Content<T>.Card {...props} />` | `<React.Component />` | Returns the card according the `type`             |
+| `<Content<T>.Form {...props} />` | `<React.Component />` | Returns the form according the `type`             |
+
+### Users
+
+_on demand_
+
+### Feedback
+
+| Name           | Description                               |
+| -------------- | ----------------------------------------- |
+| `id 💽`        | Feedback ID                               |
+| `type 💽`      | Symbol **[ `Favorite`, `Like`, `Fair` ]** |
+| `user 💽`      | User ID                                   |
+| `content 💽`   | Content ID                                |
+| `createdAt 💽` | Creation date                             |
