@@ -71,7 +71,7 @@ Each `type` generates a class which extends the `Content` class.
 
 | Name                             | Return                | Description                                       |
 | -------------------------------- | --------------------- | ------------------------------------------------- |
-| **static**`get(content)`         | `Content<T>`          | Get content according the `type`                  |
+| **static** `get(content)`         | `Content<T>`          | Get content according the `type`                  |
 | **static** `loadContent(id)`     | `P() => Content<T>`   | Load content by `id` and set according the `type` |
 | `saveContent()`                  | `P() => undefined`    | Save form according the `type`                    |
 | `<Content<T>.Card {...props} />` | `<React.Component />` | Returns the card according the `type`             |
