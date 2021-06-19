@@ -1,0 +1,42 @@
+.card {
+  margin-bottom: 25px;
+  margin-left: 25px;
+
+  height: 300px;
+  max-width: 900px;
+  flex-grow: 1;
+  overflow: hidden;
+
+  border-radius: 25px;
+}
+
+.card .cardInfo {
+  display: none;
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  padding: 10px;
+  background-color: #ffffffcc;
+  transform: translate(0%, -100%);
+}
+
+.card:hover .cardInfo {
+  display: inherit;
+}
+
+.img img {
+  max-height: 100%;
+  min-width: 100%;
+  position: inherit !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: cover;
+  vertical-align: bottom;
+
+  transform: translate(0%, -100%) !important;
+}
+
+.img,
+.img div {
+  height: 100%;
+  width: 100%;
+}

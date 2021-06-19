@@ -1,14 +1,17 @@
 import Head from "next/head";
-import React, { useState } from "react";
-import Content from "../src/entity/content/Content";
+import React, { useEffect, useState } from "react";
+import Content from "../src/collections/contents/Content";
+import ContentPanel from "../src/collections/contents/ContentPanel";
 
 export default function Home() {
-  const [content, setContent] = useState(
-    Content.get({
-      id: 0,
-      type: "class",
-    })
-  );
+  const [contents, setContents] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const contents = await Content.query();
+      setContents(contents);
+    })();
+  }, []);
 
   return (
     <div>
@@ -19,15 +22,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <content.Card content={content} />
-      <button
-        onClick={() => {
-          setContent({ ...content, id: content.id + 1 });
-        }}
-      >
-        TESTE
-      </button>
-      <div>Build your page here</div>
+      <div style={{ height: "100vh", width: "100vw", overflow: "auto" }}>
+        <ContentPanel contents={contents} />
+      </div>
     </div>
   );
 }

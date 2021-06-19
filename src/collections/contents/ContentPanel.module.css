@@ -1,0 +1,23 @@
+.container {
+  width: calc(100% - 25px);
+  height: 100%;
+  padding-top: 25px;
+  padding-right: 25px;
+
+  display: flex;
+  justify-content: center;
+}
+
+.panel {
+  height: auto;
+
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 600px) {
+  .panel {
+    width: 100%;
+  }
+}
