@@ -53,7 +53,7 @@ _PS: we may have to check a way of returns a contract based on **5etools** integ
 
 | Symbol | Meaning        |
 | ------ | -------------- |
-| 🏅     | Tag identifier |
+| 🏅     | Token identifier |
 
 | Type      | Relevant data (show on cards)                                                         |
 | --------- | ------------------------------------------------------------------------------------- |
