@@ -1,9 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Khand&display=swap");
+
 html,
 body {
   padding: 0;
   margin: 0;
   background-color: #1f1e1e;
   color: #ffffff;
+  font-family: "Khand", "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 /* ::-webkit-scrollbar-track {

@@ -1,0 +1,65 @@
+.page {
+  position: absolute;
+  width: 100%;
+}
+
+.navbar {
+  position: fixed;
+  height: 90px;
+  background-color: #1f1e1e;
+  width: calc(100% - 40px);
+  z-index: 999;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 0px 20px;
+}
+
+.navbar > div {
+  border-radius: 9999px;
+}
+
+.navbar > .button {
+  padding: 0px 35px;
+  height: 70px;
+  font-size: 30px;
+  background-color: #c62b29;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.navbar > .button:hover {
+  background-color: #d94745;
+}
+
+.navbar > .input {
+  height: 70px;
+  width: 100%;
+  background-color: #ffffff22;
+  overflow: hidden;
+}
+
+.navbar > .input:hover {
+  background-color: #ffffff44;
+}
+
+.navbar > .input > input {
+  padding: 0px 35px;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  font-size: 28px;
+  font-family: "Khand";
+  outline: none;
+  border: none;
+  color: #ffffff;
+}
+
+.container {
+  padding-top: 90px;
+}
